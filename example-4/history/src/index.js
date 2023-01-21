@@ -58,7 +58,7 @@ function setupHandlers(app, db, messageChannel) {
 
         const parsedMsg = JSON.parse(msg.content.toString()); // Parse the JSON message.
         
-        return videosCollection.insertOne({ videoPath: parsedMsg.videoPath }) // Record the "view" in the database.
+        return videosCollection.insertOne({ videoPath: parsedMsg.videoPath ,  view: 'viewed' + parsedMsg.videoId}) // Record the "view" in the database.
             .then(() => {
                 console.log("Acknowledging message was handled.");
                 
